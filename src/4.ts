@@ -3,6 +3,9 @@ class Key {
   constructor() {
     this.signature = Math.random();
   }
+  getSignature() {
+    return this.signature
+  }
 }
 
 class Person {
@@ -41,7 +44,7 @@ class MyHouse extends House {
   }
 
   OpenDoor(key: Key) {
-    if (key === this.Key) {
+    if (key.getSignature() === this.Key.getSignature()) {
       this.Door = true;
     }
 
@@ -53,7 +56,7 @@ const key = new Key();
 const house = new MyHouse(key);
 const person = new Person(key);
 
-house.openDoor(person.getKey());
+house.OpenDoor(person.getKey());
 
 house.comeIn(person);
 
